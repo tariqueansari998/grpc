@@ -19,4 +19,13 @@ public class BookAuthorServiceImpl extends BookServiceGrpc.BookServiceImplBase {
                 .ifPresent(responseObserver::onNext);
         responseObserver.onCompleted();
     }
+
+    @Override
+    public void getBooksByAuthor(Author request, StreamObserver<Book> responseObserver) {
+        Books.getBooks()
+                .stream()
+                .filter( book -> book.getAuthorId() ==  request.getAuthorId())
+                .forEach(responseObserver::onNext);
+        responseObserver.onCompleted();
+    }
 }

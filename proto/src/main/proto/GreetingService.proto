@@ -18,4 +18,7 @@ message Author{
 
 service BookService{
  rpc getAuthor(Book) returns(Author);
+
+ // server streaming
+  rpc getBooksByAuthor(Author) returns(stream Book);
 }
