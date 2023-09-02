@@ -1,0 +1,21 @@
+syntax="proto3";
+
+package com.example.proto;
+option java_multiple_files =true;
+
+message Book{
+ int64 book_id =1;
+ string title = 2;
+ float price =3;
+ int64 author_id=4;
+}
+
+message Author{
+  int64 author_id=1;
+  string name = 2;
+  int64 book_id=3;
+}
+
+service BookService{
+ rpc getAuthor(Book) returns(Author);
+}
